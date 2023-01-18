@@ -1,15 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-    <link rel="stylesheet" href="/style.css" />
-  </head>
-  <body>
 
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite App</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <!-- Login UI -->
+  <section id="login" hidden>
+    <h2>You need to be logged in to access the app</h2>
+    <button id="loginButton">Login</button>
+  </section>
+  <!-- Application UI -->
+  <section id="app" hidden>
+    <!-- Show login status -->
+    <h2>Welcome, <span id="user"></span>
+    <button id="logoutButton">Logout</button></h2>
+    <!-- Update user settings -->
+    <fieldset id="settings">
+      <legend>User settings</legend>
+      <label>
+        <span>Dice sides:</span>
+        <input type="number" min="0" max="100" id="sides" value="6" />
+      </label>
+      <button id="saveButton">Save</button>
+    </fieldset>
+    <br>
+    <!-- Roll dices -->
+    <fieldset id="dices">
+      <legend>Dices</legend>
+      <label>
+        <span>Count</span>
+        <input type="number" min="0" id="count" value="10" />
+      </label>
+      <button id="rollButton">Roll</button>
+      <hr>
+      <label>
+        <span>Max</span>
+        <input type="number" min="0" id="max" value="10" />
+      </label>
+      <button id="historyButton">Get last rolls</button>
+    </fieldset>
+    <br>
+    <!-- Display the result -->
+    <fieldset>
+      <legend>Results</legend>
+      <div id="result"></div>
+    </fieldset>
     <script type="module" src="/main.js"></script>
-  </body>
-</html>
+</body>
 
+</html>
