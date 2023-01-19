@@ -115,7 +115,6 @@ output registryServer string = registry.outputs.registryServer
 output databaseName string = database.outputs.databaseName
 
 output containerAppEnvironmentName string = containerEnvironment.outputs.containerEnvironmentName
-output containerAppEnvironmentId string = containerEnvironment.outputs.containerEnvironmentId
 
 output containerNames array = containerNames
 output containerAppNames array = [for (name, i) in containerNames: containers[i].outputs.containerName]
