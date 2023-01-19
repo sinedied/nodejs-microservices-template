@@ -70,6 +70,7 @@ module containerEnvironment './modules/container-env.bicep' = {
     location: location
     tags: commonTags
   }
+  dependsOn: [logs]
 }
 
 var containersConfig = contains(config, 'containers') ? config.containers : []
@@ -86,7 +87,7 @@ module containers './modules/container.bicep' = [for container in containersConf
     name: container.name
     options: contains(container, 'options') ? container.options : {}
   }
-  dependsOn: [logs, registry, containerEnvironment]
+  dependsOn: [registry, containerEnvironment]
 }]
 
 var websitesConfig = contains(config, 'websites') ? config.websites : []
@@ -102,6 +103,7 @@ module websites './modules/website.bicep' = [for website in websitesConfig: {
     tags: commonTags
     options: contains(website, 'options') ? website.options : {}
   }
+  dependsOn: containers
 }]
 
 output resourceGroupName string = resourceGroup().name
