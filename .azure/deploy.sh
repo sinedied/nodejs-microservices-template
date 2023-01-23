@@ -39,6 +39,9 @@ az containerapp update \
   --image "$REGISTRY_SERVER/dice-api:$commit_sha" \
   --set-env-vars \
     DATABASE_CONNECTION_STRING="$DATABASE_CONNECTION_STRING" \
+  --scale-rule-name http-rule \
+  --scale-rule-type http \
+  --scale-rule-http-concurrency 100 \
   --query "properties.configuration.ingress.fqdn" \
   --output tsv
 
