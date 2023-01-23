@@ -1,5 +1,5 @@
 // Middleware to pass on request ID
-function fetch(req, res, next) {
+function requestId(req, res, next) {
   const requestId = req.get('x-request-id');
   if (requestId) {
     // Set the request ID on the response
@@ -16,4 +16,4 @@ function fetch(req, res, next) {
 }
 
 
-module.exports = fetch;
+module.exports = requestId;
