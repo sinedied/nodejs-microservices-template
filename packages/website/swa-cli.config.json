@@ -7,10 +7,7 @@
       "run": "npm run dev",
       "appBuildCommand": "npm run build",
       "appDevserverUrl": "http://localhost:5173",
-      "apiDevserverUrl": "http://localhost:4003",
-      "start": {
-        "apiLocation": "__dummy"
-      }
+      "apiDevserverUrl": "http://localhost:4003"
     }
   }
 }
