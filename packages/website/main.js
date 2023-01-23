@@ -10,7 +10,7 @@ async function getUserSettings() {
     const { sides } = await response.json();
     sidesInput.value = sides;
   } else {
-    resultDiv.innerHTML = 'Cannot load user settings';
+    resultDiv.innerHTML = `Cannot load user settings: ${await response.text()}`;
   }
 }
 
@@ -24,7 +24,7 @@ async function saveUserSettings() {
   if (response.ok) {
     resultDiv.innerHTML = 'User settings saved';
   } else {
-    resultDiv.innerHTML = `Cannot save user settings: ${response.statusText}`;
+    resultDiv.innerHTML = `Cannot save user settings: ${await response.text()}`;
   }
 }
 
@@ -39,7 +39,7 @@ async function rollDices() {
     const json = await response.json();
     resultDiv.innerHTML = json.result.join(', ');
   } else {
-    resultDiv.innerHTML = `Cannot roll dices: ${response.statusText}`;
+    resultDiv.innerHTML = `Cannot roll dices: ${await response.text()}`;
   }
 }
 
@@ -50,7 +50,7 @@ async function getRollHistory() {
     const json = await response.json();
     resultDiv.innerHTML = json.result.join(', ');
   } else {
-    resultDiv.innerHTML = `Cannot get roll history: ${response.statusText}`;
+    resultDiv.innerHTML = `Cannot get roll history: ${await response.text()}`;
   }
 }
 
