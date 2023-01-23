@@ -14,3 +14,6 @@ function fetch(req, res, next) {
   }
   next();
 }
+
+
+module.exports = fetch;
