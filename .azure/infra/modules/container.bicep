@@ -42,7 +42,7 @@ var cpu = resources && contains(options.resources, 'cpu') ? options.resources.cp
 var memory = resources && contains(options.resources, 'memory') ? options.resources.memory : '0.5Gi'
 
 var scale = contains(options, 'scale')
-var minReplicas = scale && contains(options.scale, 'minReplicas') ? options.scale.minReplicas : 1
+var minReplicas = scale && contains(options.scale, 'minReplicas') ? options.scale.minReplicas : 0
 var maxReplicas = scale && contains(options.scale, 'maxReplicas') ? options.scale.maxReplicas : 10
 var rules = scale && contains(options.scale, 'rules') ? options.scale.rules : []
 
