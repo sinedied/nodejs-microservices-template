@@ -47,7 +47,8 @@ class Database {
       id: 'settings-db'
     });
     const { container } = await database.containers.createIfNotExists({
-      id: 'settings'
+      id: 'settings',
+      partitionKey: '/id'
     });
     this.settings = container;
   }

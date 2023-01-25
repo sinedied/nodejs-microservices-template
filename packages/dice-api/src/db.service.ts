@@ -42,6 +42,7 @@ export class DbService {
     });
     const { container } = await database.containers.createIfNotExists({
       id: 'rolls',
+      partitionKey: '/id'
     });
     this.rolls = container;
   }
