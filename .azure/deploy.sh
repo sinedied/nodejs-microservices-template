@@ -26,6 +26,9 @@ az containerapp update \
   --image "$REGISTRY_SERVER/settings-api:$commit_sha" \
   --set-env-vars \
     DATABASE_CONNECTION_STRING="$DATABASE_CONNECTION_STRING" \
+  --enable-dapr \
+  --dapr-app-id ${CONTAINER_NAMES[0]} \
+  --dapr-app-port 5000 \
   --query "properties.configuration.ingress.fqdn" \
   --output tsv
 
@@ -42,6 +45,9 @@ az containerapp update \
   --scale-rule-name http-rule \
   --scale-rule-type http \
   --scale-rule-http-concurrency 100 \
+  --enable-dapr \
+  --dapr-app-id ${CONTAINER_NAMES[1]} \
+  --dapr-app-port 5000 \
   --query "properties.configuration.ingress.fqdn" \
   --output tsv
 
@@ -54,8 +60,11 @@ az containerapp update \
   --resource-group "$RESOURCE_GROUP_NAME" \
   --image "$REGISTRY_SERVER/gateway-api:$commit_sha" \
   --set-env-vars \
-    SETTINGS_API_URL="https://${CONTAINER_APP_HOSTNAMES[0]}" \
-    DICE_API_URL="https://${CONTAINER_APP_HOSTNAMES[1]}" \
+    SETTINGS_API_URL="http://localhost:5000/v1.0/invoke/${CONTAINER_NAMES[0]}/method" \
+    DICE_API_URL="http://localhost:5000/v1.0/invoke/${CONTAINER_NAMES[1]}/method" \
+  --enable-dapr \
+  --dapr-app-id ${CONTAINER_NAMES[2]} \
+  --dapr-app-port 5000 \
   --query "properties.configuration.ingress.fqdn" \
   --output tsv
 
