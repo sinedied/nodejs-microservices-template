@@ -22,9 +22,6 @@ jobs:
       - name: Update infrastructure
         run: .azure/infra.sh update
 
-      # - name: Update infrastructure
-      #   run: .azure/infra.sh env
-
       - name: Build project
         run: .azure/build.sh
 
