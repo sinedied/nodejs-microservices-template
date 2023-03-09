@@ -1,4 +1,8 @@
 export default async function (fastify, opts) {
+  /**
+   * @type {import('fastify').RouteShorthandOptions}
+   * @const
+   */
   const putOptions = {
     schema: {
       body: {

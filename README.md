@@ -1,15 +1,15 @@
 # ☁️ nodejs-microservices
 
-Discover the fundamentals of microservices architecture and how to implement them from code to production, using Node.js, Docker and Azure.
+Discover the fundamentals of microservices architecture and how to implement them from code to production, using Node.js, Docker and Azure. You'll use [Express](https://expressjs.com/), [Fastify](https://www.fastify.io/), and [NestJS](https://nestjs.com/) to build 3 microservices, and [Vite](https://vitejs.dev/) to create the web interface of our application.
 
-👉 [See the workshop](https://aka.ms/ws?src=gh:azure-samples/nodejs-microservices/main/docs/)
+👉 [See the workshop](https://aka.ms/ws/node-microservices)
 
 ## Prerequisites
 - Node.js v18+
 - Docker v20+
 - An Azure account ([sign up for free here](https://azure.microsoft.com/free/?WT.mc_id=javascript-0000-yolasors))
 
-You can use [GitHub Codespaces](https://github.com/features/codespaces) to work on this project directly from your browser: select **Code**, then the **Codespaces** tab and click on **Create Codespaces on main**.
+You can use [GitHub Codespaces](https://github.com/features/codespaces) to work on this project directly from your browser: select the **Code** button, then the **Codespaces** tab and click on **Create Codespaces on main**.
 
 You can also use the [Dev Containers extension for VS Code](https://aka.ms/vscode/ext/devcontainer) to work locally using a ready-to-use dev environment.
 

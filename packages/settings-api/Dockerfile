@@ -1,4 +1,7 @@
 # syntax=docker/dockerfile:1
+
+# Run Node.js app
+# ------------------------------------
 FROM node:18-alpine
 ENV NODE_ENV=production
 

@@ -6,7 +6,7 @@ const rollsService = require('../services/rolls');
 router.put('/settings', async function(req, res) {
   const settings = req.body;
   try {
-    await settingsService.saveUserSettings(req, req.user, settings);
+    await settingsService.saveUserSettings(req.user, settings);
     res.sendStatus(204);
   } catch (error) {
     res.status(502).send(error.message || 'Bad gateway');
@@ -15,7 +15,7 @@ router.put('/settings', async function(req, res) {
 
 router.get('/settings', async function(req, res) {
   try {
-    const settings = await settingsService.getUserSettings(req, req.user);
+    const settings = await settingsService.getUserSettings(req.user);
     res.json(settings);
   } catch (error) {
     res.status(502).send(error.message || 'Bad gateway');
@@ -28,7 +28,7 @@ router.post('/rolls', async function(req, res) {
     return res.status(400).send('Invalid count parameter');
   }
   try {
-    const result = await rollsService.rollDices(req, req.user, req.body.count);
+    const result = await rollsService.rollDices(req.user, req.body.count);
     res.json(result);
   } catch (error) {
     res.status(502).send(error.message || 'Bad gateway');
@@ -37,7 +37,7 @@ router.post('/rolls', async function(req, res) {
 
 router.get('/rolls/history', async function(req, res) {
   try {
-    const result = await rollsService.getRollsHistory(req, req.user, req.query.max);
+    const result = await rollsService.getRollsHistory(req.user, req.query.max);
     res.json(result);
   } catch (error) {
     res.status(502).send(error.message || 'Bad gateway');

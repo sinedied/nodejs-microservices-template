@@ -76,11 +76,6 @@ resource container 'Microsoft.App/containerApps@2022-03-01' = {
         targetPort: targetPort
         // transport: 'Auto'
       } : {}
-      dapr: {
-        enabled: true
-        appId: name
-        appPort: 5000
-      }
       registries: [
         {
           server: containerRegistry.properties.loginServer

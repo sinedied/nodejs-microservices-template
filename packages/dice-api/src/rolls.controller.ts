@@ -17,8 +17,8 @@ export class RollsController {
   constructor(private readonly db: DbService) {}
 
   @Post()
-  async rollDice(@Body('sides') sides: number) {
-    this.logger.log(`Rolling dice [${sides}]`);
+  async rollDice(@Body('sides', ParseIntPipe) sides: number) {
+    this.logger.log(`Rolling dice [sides: ${sides}]`);
     const result = Math.ceil(Math.random() * sides);
     await this.db.addRoll({
       sides: sides,

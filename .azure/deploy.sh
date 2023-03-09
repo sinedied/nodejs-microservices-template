@@ -54,8 +54,10 @@ az containerapp update \
   --resource-group "$RESOURCE_GROUP_NAME" \
   --image "$REGISTRY_SERVER/gateway-api:$commit_sha" \
   --set-env-vars \
-    SETTINGS_API_URL="http://localhost:5000/v1.0/invoke/${CONTAINER_NAMES[0]}/method" \
-    DICE_API_URL="http://localhost:5000/v1.0/invoke/${CONTAINER_NAMES[1]}/method" \
+    SETTINGS_API_URL="https://${CONTAINER_APP_HOSTNAMES[0]}" \
+    DICE_API_URL="https://${CONTAINER_APP_HOSTNAMES[1]}" \
+  --cpu 2 \
+  --memory 4 \
   --query "properties.configuration.ingress.fqdn" \
   --output tsv
 
@@ -65,5 +67,4 @@ npx swa deploy \
   --app-name "${STATIC_WEB_APP_NAMES[0]}" \
   --deployment-token "${STATIC_WEB_APP_DEPLOYMENT_TOKENS[0]}" \
   --env "production" \
-  --no-use-keychain \
   --verbose

@@ -1,11 +1,11 @@
 const config = require('../config');
 const { getUserSettings } = require('./settings');
 
-async function rollDices(req, userId, count) {
-  const { sides } = await getUserSettings(req, userId);
+async function rollDices(userId, count) {
+  const { sides } = await getUserSettings(userId);
   const promises = [];
   const rollDice = async () => {
-    const response = await req.fetch(`${config.diceApiUrl}/rolls`, {
+    const response = await fetch(`${config.diceApiUrl}/rolls`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ sides }),
@@ -24,10 +24,10 @@ async function rollDices(req, userId, count) {
   return { result: await Promise.all(promises) };
 }
 
-async function getRollsHistory(req, userId, max) {
+async function getRollsHistory(userId, max) {
   max = max ?? '';
-  const { sides } = await getUserSettings(req, userId);
-  const response = await req.fetch(`${config.diceApiUrl}/rolls/history?max=${max}&sides=${sides}`);
+  const { sides } = await getUserSettings(userId);
+  const response = await fetch(`${config.diceApiUrl}/rolls/history?max=${max}&sides=${sides}`);
   if (!response.ok) {
     throw new Error(`Cannot get roll history for user ${userId}: ${response.statusText}`);
   }

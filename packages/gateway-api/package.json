@@ -1,4 +1,3 @@
-
 {
   "name": "gateway-api",
   "version": "0.0.0",
@@ -10,9 +9,8 @@
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
-    "debug": "~4.3.4",
-    "express": "~4.18.2",
+    "debug": "^4.3.4",
+    "express": "^4.18.2",
     "pino-http": "^8.2.1"
   }
 }
-
